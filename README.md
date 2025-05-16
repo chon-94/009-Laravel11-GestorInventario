@@ -124,6 +124,20 @@ en el index
 
 # Crear
 
+ a aca empieza los dolores de huevos aveces tenemos problemas por aca ahora no estoy seguro como lo solucione pero lo hice en el controlador
+ se que era ahi porque el probleam era el boton 
+
+ debemos de tener en cuenta el controlador de editar para ver la vista y update para poder hacer la actualizazcion asi que serian 2 rutas y 2 cotroladores
+
+     Route::get('/productos/create', [ProductoController::class, 'create'])->name('productos.create');
+     Route::post('productos', [ProductoController::class, 'store'])->name('productos.store');
+
+trabajamos en la vista de editary debemos de tener en cuenta esto esto ira en nuestro formulario                
+     <form action="{{ route('productos.store') }}" method="POST">
+     @csrf
+     @method('post') 
+
+
 #
 
 # Ver

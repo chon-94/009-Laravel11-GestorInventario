@@ -10,4 +10,4 @@ Route::get('/', function () {
 
 Route::get('/productos', [ProductoController::class, 'index'])->name('productos.index');
 Route::get('/productos/create', [ProductoController::class, 'create'])->name('productos.create');
-
+Route::post('productos', [ProductoController::class, 'store'])->name('productos.store');
