@@ -44,11 +44,11 @@
                 </a>
 
                 <!-- Botón para alternar modo claro/oscuro -->
-                {{-- <button id="darkModeToggle" 
+                <button id="darkModeToggle" 
                         class="px-2 py-2 rounded-md bg-gray-800 text-white dark:bg-gray-200 dark:text-gray-800 transition flex items-center gap-2">
                     <i class="fa-solid fa-circle-half-stroke"></i>
                     Claro/Oscuro
-                </button> --}}
+                </button>
             </div>
 
             <!-- Contenido principal centrado -->

@@ -43,4 +43,40 @@ Consola (migracion)
 
 # Layouts
 
+ hay que explicarlo? bueno aca debemos de crear la carpeta layouts en view y creamos nuestra plantilla y luego welcome lo adaptamos 
+
+#
+
+# DarkMOde
+
+configuramos el boton comentado para que sea dark mode
+
+GI/resources/js/app.js
+
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('darkModeToggle');
+    if (!toggleBtn) return;
+
+    // Verificar si hay preferencia guardada
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+    } else {
+        document.documentElement.classList.remove('dark');
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+
+        // Guardar preferencia
+        if (document.documentElement.classList.contains('dark')) {
+            localStorage.theme = 'dark';
+        } else {
+            localStorage.theme = 'light';
+        }
+    });
+});
+
+GI/tailwind.config.js
+darkmode:'class',
+
 #
