@@ -9,8 +9,8 @@ class ProductoController extends Controller
 {
     public function index()
     {
-        // $productos = Producto::paginate(5);
-        $productos = Producto::all();
+        $productos = Producto::paginate(8);
+        // $productos = Producto::all();
         return view('productos.index', compact('productos'));// Retorna la vista 'productos.index' pasando los productos como variable
 
     }
@@ -25,7 +25,7 @@ class ProductoController extends Controller
         // Validación básica
         $request->validate([
             'nombre' => 'required|string|max:255',
-            'unidad' => 'required|in:kilogramos,gramos,litros,mililitros,unidad',
+            'unidad' => 'required|in:kilogramos,gramos,litros,mililitros,centimetro,metro,unidad',
             'stock' => 'required|numeric|min:0',
             'compra' => 'nullable|numeric|min:0',
             'venta' => 'nullable|numeric|min:0',
@@ -68,7 +68,7 @@ class ProductoController extends Controller
         // Validación de los campos del formulario
         $request->validate([
             'nombre' => 'required|string|max:255',
-            'unidad' => 'required|in:kilogramos,gramos,litros,mililitros,unidad',
+            'unidad' => 'required|in:kilogramos,gramos,litros,mililitros,centimetro,metro,unidad',
             'stock' => 'required|numeric|min:0',
             'compra' => 'nullable|numeric|min:0',
             'venta' => 'nullable|numeric|min:0',
