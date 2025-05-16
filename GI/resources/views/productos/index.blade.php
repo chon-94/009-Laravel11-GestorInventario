@@ -28,7 +28,7 @@
                 <div class="overflow-x-auto">
                     <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                         <!-- Encabezado de columnas -->
-                        <thead class="bg-gray-50 dark:bg-gray-900">
+                        <thead class="bg-gray-200 dark:bg-gray-900">
                             <tr>
                                 <th class="px-4 py-3 text-left text-sm font-medium text-gray-500 dark:text-gray-400">ID</th>
                                 <th class="px-4 py-3 text-left text-sm font-medium text-gray-500 dark:text-gray-400">Nombre</th>
