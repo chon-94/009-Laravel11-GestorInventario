@@ -18,7 +18,6 @@ Consola (migracion)
 
 #
 
-
 ## Instalando Breeze en caso requiera en este es innecesario
 
      php artisan help breeze:install
@@ -78,5 +77,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 GI/tailwind.config.js
 darkmode:'class',
+
+# MakeModel
+
+ ejecutamos
+
+     php artisan make:model Producto -mcr
+
+ se nos crea 3 archivos
+
+ INFO  Model [app/Models/Producto.php] created successfully.  
+ INFO  Migration [database/migrations/2025_05_16_023930_create_productos_table.php] created successfully.  
+ INFO  Controller [app/Http/Controllers/ProductoController.php] created successfully.      
+
+#
+
+#
 
 #
