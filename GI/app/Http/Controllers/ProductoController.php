@@ -20,7 +20,6 @@ class ProductoController extends Controller
         return view('productos.create');
     }
 
-
     public function store(Request $request)
     {
         // Validación básica
@@ -52,9 +51,10 @@ class ProductoController extends Controller
         return redirect()->route('productos.index')->with('success', 'Producto creado exitosamente.');
     }
 
-    public function show(Producto $id)
+    public function show($id)
     {
-        //
+        $producto = Producto::findOrFail($id); // Utiliza findOrFail para manejar el caso en que el producto no existe
+        return view('productos.show', compact('producto'));
     }
 
     public function edit(Producto $id)

@@ -64,8 +64,7 @@
 
 
                                         <!-- Ver Detalle -->
-                                        {{-- <a href="{{ route('productos.show', $producto->id) }}"  --}}
-                                            <a href="#" 
+                                        <a href="{{ route('productos.show', $producto->id) }}" 
                                             class="inline-flex items-center text-green-600 rounded hover:bg-green-100 dark:text-green-400 dark:hover:bg-green-900/30 transition-colors duration-150">
                                              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
