@@ -122,4 +122,18 @@ en el index
 
 # 
 
+# Crear
+
+#
+
+# Ver
+
+#
+
+# Editar
+
+#
+
+# Eliiminar
+
 #
