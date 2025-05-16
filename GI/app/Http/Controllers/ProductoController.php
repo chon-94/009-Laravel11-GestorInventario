@@ -57,14 +57,44 @@ class ProductoController extends Controller
         return view('productos.show', compact('producto'));
     }
 
-    public function edit(Producto $id)
+    public function edit( $id)
     {
-        //
+        $producto = Producto::findOrFail($id); // Buscamos manualmente
+        return view('productos.edit', compact('producto'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        // Validación de los campos del formulario
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'unidad' => 'required|in:kilogramos,gramos,litros,mililitros,unidad',
+            'stock' => 'required|numeric|min:0',
+            'compra' => 'nullable|numeric|min:0',
+            'venta' => 'nullable|numeric|min:0',
+            'es_perecedero' => 'boolean',
+            'fecha_caducidad' => 'nullable|date',
+            'descripcion' => 'nullable|string',
+        ]);
+    
+        // Buscamos el producto por ID
+        $producto = Producto::findOrFail($id);
+    
+        // Actualizamos los datos del producto
+        $producto->update([
+            'nombre' => $request->nombre,
+            'origen' => $request->origen ?? 'Fabricado',
+            'unidad' => $request->unidad,
+            'stock' => $request->stock,
+            'compra' => $request->compra,
+            'venta' => $request->venta,
+            'es_perecedero' => $request->es_perecedero ? true : false,
+            'fecha_caducidad' => $request->fecha_caducidad,
+            'descripcion' => $request->descripcion,
+        ]);
+    
+        // Redirigimos a la lista de productos con un mensaje de éxito
+        return redirect()->route('productos.index')->with('success', 'Producto actualizado correctamente.');
     }
 
     public function destroy(Producto $id)
