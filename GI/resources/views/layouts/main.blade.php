@@ -39,7 +39,7 @@
             <div class="fixed top-4 right-4 z-50 flex gap-2">
                 <!-- Botón para ir a la página welcome -->
                 <a href="/" 
-                    class="px-2 py-2 rounded-md bg-blue-600 text-white hover:bg-blue-700 transition">
+                    class="px-2 py-2 rounded-md  transpabg-red-400 text-dark dark:text-white hover:bg-red-100   dark:hover:bg-red-900 transition">
                     Welcome
                 </a>
 
