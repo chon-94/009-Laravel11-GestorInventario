@@ -78,6 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
 GI/tailwind.config.js
 darkmode:'class',
 
+#
+
 # MakeModel
 
  ejecutamos
