@@ -109,6 +109,16 @@ ahora deberiamos de centrarnos en las vistas rutas y  controles
 
 # index
 
+en los controladores
+
+para paginadores y solo mostar una cantidad predeterminada
+     $productos = Producto::paginate(5);
+para mostarar todo     
+     $productos = Producto::all();
+
+en el index
+    {{ $productos->links() }} 
+    <!-- Mostrar links de paginación -->
 
 # 
 
