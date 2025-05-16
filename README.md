@@ -160,3 +160,9 @@ en el index
 el paginador nos servira aca vere mas info del paginador
 
 bueno ahora a agregar lo demas  esta solo es la mitad de mi proyecto
+
+#
+
+# MakeModel Movimiento
+
+     php artisan make:model Movimiento -mcr
