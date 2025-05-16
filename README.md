@@ -107,6 +107,8 @@ darkmode:'class',
 
 ahora deberiamos de centrarnos en las vistas rutas y  controles
 
+#
+
 # index
 
 en los controladores
@@ -132,7 +134,7 @@ en el index
      Route::get('/productos/create', [ProductoController::class, 'create'])->name('productos.create');
      Route::post('productos', [ProductoController::class, 'store'])->name('productos.store');
 
-trabajamos en la vista de editary debemos de tener en cuenta esto esto ira en nuestro formulario                
+ trabajamos en la vista de editary debemos de tener en cuenta esto esto ira en nuestro formulario                
      <form action="{{ route('productos.store') }}" method="POST">
      @csrf
      @method('post') 
@@ -141,6 +143,7 @@ trabajamos en la vista de editary debemos de tener en cuenta esto esto ira en nu
 #
 
 # Ver
+ 
 
 #
 
