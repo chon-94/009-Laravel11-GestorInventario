@@ -154,3 +154,7 @@ en el index
 # Eliiminar
 
 #
+
+# Detalles
+
+el paginador nos servira aca vere mas info del paginador

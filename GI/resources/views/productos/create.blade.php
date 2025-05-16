@@ -58,6 +58,8 @@
                                 <option value="gramos">Gramos</option>
                                 <option value="litros">Litros</option>
                                 <option value="mililitros">Mililitros</option>
+                                <option value="centimetro">centimetro</option>
+                                <option value="metro">metro</option>
                                 <option value="unidad">Unidad</option>
                             </select>
                         </div>

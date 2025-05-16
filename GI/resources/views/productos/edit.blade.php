@@ -59,6 +59,8 @@
         <option value="gramos" {{ $producto->unidad == 'gramos' ? 'selected' : '' }}>Gramos</option>
         <option value="litros" {{ $producto->unidad == 'litros' ? 'selected' : '' }}>Litros</option>
         <option value="mililitros" {{ $producto->unidad == 'mililitros' ? 'selected' : '' }}>Mililitros</option>
+        <option value="centimetro" {{ $producto->unidad == 'centimetro' ? 'selected' : '' }}>centimetro</option>
+        <option value="metro" {{ $producto->unidad == 'metro' ? 'selected' : '' }}>metro</option>
         <option value="unidad" {{ $producto->unidad == 'unidad' ? 'selected' : '' }}>Unidad</option>
     </select>
 </div>
