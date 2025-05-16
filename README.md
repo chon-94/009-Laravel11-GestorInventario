@@ -158,3 +158,5 @@ en el index
 # Detalles
 
 el paginador nos servira aca vere mas info del paginador
+
+bueno ahora a agregar lo demas  esta solo es la mitad de mi proyecto
