@@ -16,17 +16,17 @@
             <!-- Diseño flexible: apila elementos verticalmente en móvil y lado a lado en pantallas grandes -->
 
             <!-- Tabla - ahora ocupa más espacio -->
-            <div class="w-full lg:w-11/12 bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden">
+            <div class="w-full lg:w-11/12 bg-rose-100 dark:bg-red-800  shadow rounded-lg overflow-hidden ">
                 <!-- Tarjeta contenedora de la tabla -->
                 
-                <div class="p-4 border-b border-gray-200 dark:border-gray-700">
-                    <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Lista de Productos</h2>
+                <div class="p-4 border-b border-pink-300 dark:border-pink-700 dark:text-zinc-800 ">
+                    <h2 class="text-lg font-semibold text-gray-800 dark:text-white dark:text-zinc-800 ">Lista de Productos</h2>
                     <!-- Encabezado de la tabla -->
                 </div>
 
                 <!-- Tabla responsive -->
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                <div class="overflow-x-auto ">
+                    <table class="min-w-full divide-y divide-pink-300 dark:divide-pink-700">
                         <!-- Encabezado de columnas -->
                         <thead class="bg-gray-200 dark:bg-gray-900">
                             <tr>
@@ -107,9 +107,8 @@
                 </div>
 
                 <!-- Paginación -->
-                <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+                <div class="p-4 border-t border-gray-200 dark:border-gray-700 dark:text-zinc-800">
                     {{ $productos->links() }}
-                    <!-- Mostrar links de paginación -->
                 </div>
             </div>
 
