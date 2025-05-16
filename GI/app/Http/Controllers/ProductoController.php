@@ -9,7 +9,10 @@ class ProductoController extends Controller
 {
     public function index()
     {
-        //
+        // $productos = Producto::paginate(5);
+        $productos = Producto::all();
+        return view('productos.index', compact('productos'));// Retorna la vista 'productos.index' pasando los productos como variable
+
     }
 
     public function create()
@@ -22,22 +25,22 @@ class ProductoController extends Controller
         //
     }
 
-    public function show(Producto $producto)
+    public function show(Producto $id)
     {
         //
     }
 
-    public function edit(Producto $producto)
+    public function edit(Producto $id)
     {
         //
     }
 
-    public function update(Request $request, Producto $producto)
+    public function update(Request $request, $id)
     {
         //
     }
 
-    public function destroy(Producto $producto)
+    public function destroy(Producto $id)
     {
         //
     }
