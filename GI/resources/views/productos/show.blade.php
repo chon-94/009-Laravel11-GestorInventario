@@ -51,11 +51,6 @@
                         </div>
                     </div>
 
-                    <div class="mt-8 flex justify-start">
-                        <a href="{{ route('productos.index') }}" class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                            Volver
-                        </a>
-                    </div>
 
                 <!-- Botones de acción -->
                 <div class="flex justify-end gap-3 mt-6">
@@ -78,9 +73,9 @@
                     </a>
 
                     <!-- Botón ELIMINAR -->
-                    {{-- <form action="{{ route('productos.destroy', $producto->id) }}" method="POST" class="inline-block">
+                    <form action="{{ route('productos.destroy', $producto->id) }}" method="POST" class="inline-block">
                         @csrf
-                        @method('DELETE') --}}
+                        @method('DELETE')
                         <button type="submit" 
                                 onclick="return confirm('¿Eliminar este producto permanentemente?')"
                                 class="flex items-center justify-center w-32 h-10 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors">

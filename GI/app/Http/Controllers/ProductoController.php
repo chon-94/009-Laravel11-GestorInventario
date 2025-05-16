@@ -99,6 +99,17 @@ class ProductoController extends Controller
 
     public function destroy(Producto $id)
     {
-        //
+        try {
+            // Eliminamos el producto
+            $id->delete();
+
+            // Redirigimos con mensaje de éxito
+            return redirect()->route('productos.index')
+                             ->with('success', 'Producto eliminado exitosamente.');
+        } catch (\Exception $e) {
+            // En caso de error, mostramos mensaje detallado
+            return redirect()->back()
+                             ->with('error', 'No se pudo eliminar el producto: ' . $e->getMessage());
+        }
     }
 }
