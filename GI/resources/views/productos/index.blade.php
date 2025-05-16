@@ -115,9 +115,9 @@
             <!-- Botón movido más a la derecha -->
             <div class="w-full lg:w-1/6 flex justify-end">
                 <!-- Botón "Crear Producto", alineado a la derecha en pantallas grandes -->
-                {{-- <a href="{{route('productos.create')}}" class="w-full px-4 py-2 text-center text-white bg-blue-600 hover:bg-blue-700 rounded-md transition duration-200"> --}}
+                <a href="{{route('productos.create')}}" class="w-full px-4 py-2 text-center text-white bg-blue-600 hover:bg-blue-700 rounded-md transition duration-200">
                     Crear
-                {{-- </a> --}}
+                </a>
             </div>
 
         </div>
