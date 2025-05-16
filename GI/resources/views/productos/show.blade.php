@@ -6,7 +6,7 @@
 
             <div class="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden">
                 <div class="p-4 border-b border-gray-200 dark:border-gray-700">
-                    <h2 class="text-lg font-semibold text-gray-800 dark:text-white">{{ $producto->nombre }}</h2>
+                    <h2 class="text-lg font-semibold text-gray-800 dark:text-white">ID: {{ $producto->id }}</h2>
                 </div>
 
                 <div class="p-6">

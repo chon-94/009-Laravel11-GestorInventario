@@ -8,7 +8,7 @@
     <div class="container mx-auto px-4">
         <!-- Contenedor centralizado con padding horizontal -->
 
-        <h1 class="text-2xl font-bold mb-6">Nuevo Producto</h1>
+        <h1 class="text-2xl font-bold mb-6">Editar</h1>
         <!-- Título de la página -->
 
         <!-- Tarjeta contenedora del formulario -->
@@ -16,7 +16,7 @@
 
             <!-- Encabezado de la tarjeta -->
             <div class="p-4 border-b border-gray-200 dark:border-gray-700">
-                <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Formulario de Producto</h2>
+                <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Editor  de productors ID: {{ $producto->id }}</h2>
             </div>
 
             <!-- Cuerpo del formulario -->
