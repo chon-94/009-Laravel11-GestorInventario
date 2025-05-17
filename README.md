@@ -166,3 +166,198 @@ bueno ahora a agregar lo demas  esta solo es la mitad de mi proyecto
 # MakeModel Movimiento
 
      php artisan make:model Movimiento -mcr
+
+#
+
+# Modelado y dabe de datos
+
+ tenemos que programar ambas
+
+ el modelado 
+ <?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+/**
+ * Modelo: Movimiento
+ *
+ * Este modelo representa un movimiento de stock (venta o reposición)
+ * Se usa para:
+    * - Registrar cuándo se vende o repone un producto
+    * - Guardar la cantidad y unidad usada
+    * - Relacionarlo con el modelo Producto
+    * - Usarse en reportes de inventario
+ */
+class Movimiento extends Model
+{
+    use HasFactory;
+
+    /**
+     * Campos que pueden ser asignados masivamente.
+     *
+     * @var array<string>
+     */
+    protected $fillable = [
+        'producto_id', 
+        'tipo', 
+        'unidad_venta', 
+        'cantidad', 
+        'fecha',
+        'descripcion', // Aquí agregamos el campo
+
+    ];
+
+    /**
+     * Tipos de datos adicionales
+     * Para asegurar formato decimal y fechas
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'cantidad' => 'decimal:2',
+        'fecha' => 'date',
+    ];
+
+    /**
+     * Relación: un movimiento pertenece a un producto
+     * Devuelve el producto relacionado
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function producto()
+    {
+        return $this->belongsTo(\App\Models\Producto::class);
+    }
+
+    /**
+     * Devuelve las unidades permitidas para venta/reposición
+     * Útil para validaciones y selects dinámicos
+     *
+     * @return array<string>
+     */
+    public static function unidadesPermitidas()
+    {
+        return ['kilogramos', 'gramos', 'litros', 'mililitros', 'centimetro', 'metro', 'unidad'];
+    }
+
+    /**
+     * Convierte la cantidad a la unidad del almacén
+     * Ejemplo: 500 gramos → 0.5 kilogramos (si el producto está en kilogramos)
+     *
+     * @param string $unidad_venta - Unidad en la que se vendió
+     * @param float $cantidad - Cantidad vendida
+     * @param string $unidad_almacen - Unidad base del producto
+     * @return float - Cantidad convertida a unidad del almacenista
+     */
+    public static function convertirAUnidadAlmacen($unidad_venta, $cantidad, $unidad_almacen)
+    {
+        // Definimos cómo convertir entre unidades
+        $conversiones = [
+            'kilogramos' => [
+                'gramos' => 1000,
+                'kilogramos' => 1,
+            ],
+            'litros' => [
+                'mililitros' => 1000,
+                'litros' => 1,
+            ],
+            'metro' => [
+                'centimetro' => 100,
+                'metro' => 1,
+            ],
+            'unidad' => [
+                'unidad' => 1,
+            ]
+        ];
+
+        // Si hay conversión posible, la hacemos
+        if (isset($conversiones[$unidad_almacen][$unidad_venta])) {
+            return $cantidad / $conversiones[$unidad_almacen][$unidad_venta];
+        }
+
+        // Si no hay conversión, devolvemos la misma cantidad
+        return $cantidad;
+    }
+}
+
+
+la basede datos
+
+
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+         * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('movimientos', function (Blueprint $table) {
+            $table->id(); // ID único del movimiento
+
+            // Relación con productos
+            $table->foreignId('producto_id')
+                  ->constrained()
+                  ->onDelete('cascade');
+
+            // Tipo: venta o reposición
+            $table->enum('tipo', [
+                'venta', 
+                'reponer'
+            ])->default('venta');
+
+            // Unidad en la que se vendió o reponía
+            $table->enum('unidad_venta', [
+                'kilogramos', 
+                'gramos', 
+                'litros', 
+                'mililitros', 
+                'centimetro', 
+                'metro', 
+                'unidad'
+            ])->default('kilogramos');
+
+            // Cantidad movida
+            $table->decimal('cantidad', 8, 2);
+
+            // Fecha del movimiento
+            $table->date('fecha')->default(now());
+
+            $table->text('descripcion')->nullable(); // Campo opcional
+
+
+            $table->timestamps(); // created_at, updated_at
+        });
+    }
+
+    /**
+      * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('movimientos');
+    }
+};
+
+# Vistas
+
+ deberiasmos de crear las vistas para eso priemro la carpeta correspondiente y los archivos correspondiente
+
+#
+
+# Index
+ en el caso de index 
+# Create
+#  
+# Edit
+#
+# Eliminar
+
