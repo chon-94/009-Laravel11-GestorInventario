@@ -20,7 +20,7 @@ Route::delete('/productos/{id}/destroy', [ProductoController::class, 'destroy'])
 
 // Movimientos
 Route::get('/movimientos', [MovimientoController::class, 'index'])->name('movimientos.index');
-// Route::get('/movimientos/create', [MovimientoController::class, 'create'])->name('movimientos.create');
+Route::get('/movimientos/create', [MovimientoController::class, 'create'])->name('movimientos.create');
 // Route::post('/movimientos', [MovimientoController::class, 'store'])->name('movimientos.store');
 // Route::get('/movimientos/{id}', [MovimientoController::class, 'show'])->name('movimientos.show');
 // Route::get('/movimientos/{id}/edit', [MovimientoController::class, 'edit'])->name('movimientos.edit');
