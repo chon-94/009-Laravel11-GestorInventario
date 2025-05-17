@@ -7,18 +7,47 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+         * Run the migrations.
      */
     public function up(): void
     {
         Schema::create('movimientos', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id(); // ID único del movimiento
+
+            // Relación con productos
+            $table->foreignId('producto_id')
+                  ->constrained()
+                  ->onDelete('cascade');
+
+            // Tipo: venta o reposición
+            $table->enum('tipo', [
+                'venta', 
+                'reponer'
+            ])->default('venta');
+
+            // Unidad en la que se vendió o reponía
+            $table->enum('unidad_venta', [
+                'kilogramos', 
+                'gramos', 
+                'litros', 
+                'mililitros', 
+                'centimetro', 
+                'metro', 
+                'unidad'
+            ])->default('kilogramos');
+
+            // Cantidad movida
+            $table->decimal('cantidad', 8, 2);
+
+            // Fecha del movimiento
+            $table->date('fecha')->default(now());
+
+            $table->timestamps(); // created_at, updated_at
         });
     }
 
     /**
-     * Reverse the migrations.
+      * Reverse the migrations.
      */
     public function down(): void
     {
