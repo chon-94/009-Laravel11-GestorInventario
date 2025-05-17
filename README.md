@@ -354,7 +354,9 @@ return new class extends Migration
 #
 
 # Index
- en el caso de index 
+ en el caso de index programareos 2 tablas una para vel las ventas recientes y otra para la reposicion reciente  con un boton crear
+ el cual nos llevara a crear un nuevo registro ya sea venta o ya sea reposicion 
+ 
 # Create
 #  
 # Edit
