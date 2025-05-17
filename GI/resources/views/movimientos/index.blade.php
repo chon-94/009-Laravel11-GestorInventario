@@ -83,5 +83,6 @@
                 Registrar Nuevo Movimiento
             </a>
         </div>
+        
     </div>
 </main>
