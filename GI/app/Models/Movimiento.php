@@ -30,6 +30,8 @@ class Movimiento extends Model
         'unidad_venta', 
         'cantidad', 
         'fecha',
+        'descripcion', // Aquí agregamos el campo
+
     ];
 
     /**

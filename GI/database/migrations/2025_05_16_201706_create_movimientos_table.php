@@ -42,6 +42,9 @@ return new class extends Migration
             // Fecha del movimiento
             $table->date('fecha')->default(now());
 
+            $table->text('descripcion')->nullable(); // Campo opcional
+
+
             $table->timestamps(); // created_at, updated_at
         });
     }
