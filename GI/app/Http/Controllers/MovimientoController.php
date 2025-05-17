@@ -9,12 +9,12 @@ class MovimientoController extends Controller
 {
     public function index()
     {
-        return view('movimientos.index');// Retorna la vista 'productos.index' pasando los productos como variable
+        return view('movimientos.index');// Retorna la vista 'movimientos.index' pasando los movimientos como variable
     }
 
     public function create()
     {
-        //
+        return view('movimientos.create');// Retorna la vista 'movimientos.index' pasando los movimientos como variable
     }
 
     public function store(Request $request)
