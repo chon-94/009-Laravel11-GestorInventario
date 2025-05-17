@@ -9,7 +9,7 @@ class MovimientoController extends Controller
 {
     public function index()
     {
-        //
+        return view('movimientos.index');// Retorna la vista 'productos.index' pasando los productos como variable
     }
 
     public function create()
