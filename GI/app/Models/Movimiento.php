@@ -31,6 +31,7 @@ class Movimiento extends Model
         'cantidad', 
         'fecha',
         'descripcion', // Aquí agregamos el campo
+        
 
     ];
 
@@ -43,6 +44,8 @@ class Movimiento extends Model
     protected $casts = [
         'cantidad' => 'decimal:2',
         'fecha' => 'date',
+        'cantidad' => 'required|numeric|min:0.01',
+
     ];
 
     /**
