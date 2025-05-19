@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Movimiento;
 use Illuminate\Http\Request;
 
+use App\Models\Producto;
+
 class MovimientoController extends Controller
 {
     public function index()
@@ -14,7 +16,12 @@ class MovimientoController extends Controller
 
     public function create()
     {
-        return view('movimientos.create');// Retorna la vista 'movimientos.index' pasando los movimientos como variable
+    // $productos = Producto::all();
+    $productos = Producto::paginate(4);    
+
+    $productosCombo = Producto::all();
+    return view('movimientos.create', compact('productos', 'productosCombo'));
+
     }
 
     public function store(Request $request)

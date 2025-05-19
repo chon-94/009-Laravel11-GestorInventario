@@ -356,10 +356,123 @@ return new class extends Migration
 # Index
  en el caso de index programareos 2 tablas una para vel las ventas recientes y otra para la reposicion reciente  con un boton crear
  el cual nos llevara a crear un nuevo registro ya sea venta o ya sea reposicion 
- 
+
 # Create
 #  
 # Edit
 #
 # Eliminar
 
+# fdsfsdf
+    <!-- Formulario de movimiento -->
+    <div class="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden">
+                <div class="p-4 border-b border-gray-200 dark:border-gray-700">
+                    <h2 class="text-lg font-semibold text-gray-800 dark:text-white">Nuevo Movimiento</h2>
+                </div>
+
+                <div class="p-6">
+                    <form action="{{ route('movimientos.store') }}" method="POST">
+                        @csrf
+
+                        <!-- Producto -->
+                        <div class="mb-4">
+                            <label for="producto_id" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Producto*</label>
+                            <select name="producto_id" id="producto_id" required 
+                                    class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white">
+                                @foreach ($productos as $producto)
+                                    <option value="{{ $producto->id }}" data-unidad="{{ $producto->unidad }}">
+                                        {{ $producto->nombre }} - Stock: {{ $producto->stock }} {{ $producto->unidad }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <!-- Tipo de movimiento -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="mb-4">
+                                <label for="tipo" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Tipo de movimiento*</label>
+                                <select name="tipo" id="tipo" required
+                                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white">
+                                    <option value="">Selecciona tipo...</option>
+                                    <option value="venta">Venta</option>
+                                    <option value="reponer">Reposición</option>
+                                </select>
+                            </div>
+
+                            <!-- Unidad de venta -->
+                            <div class="mb-4">
+                                <label for="unidad_venta" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Unidad de Venta*</label>
+                                <select name="unidad_venta" id="unidad_venta" required
+                                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white">
+                                    <option value="">Selecciona unidad...</option>
+                                    @php
+                                        $unidades = App\Models\Movimiento::unidadesPermitidas();
+                                    @endphp
+                                    @foreach ($unidades as $u)
+                                        <option value="{{ $u }}">{{ ucfirst($u) }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Cantidad -->
+                        <div class="mb-4">
+                            <label for="cantidad" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Cantidad*</label>
+                            <input type="number" step="0.01" min="0.01"
+                                   name="cantidad" id="cantidad" required
+                                   placeholder="Ej: 2.50"
+                                   class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:text-white">
+                        </div>
+
+                        <!-- Botón submit -->
+                        <div class="flex justify-end mt-6">
+                            <button type="submit"
+                                    class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">
+                                Registrar Movimiento
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    @endsection
+# dfdsfs
+## fdgdfg
+
+@push('scripts')
+    <!-- Script opcional para cargar unidades según producto seleccionado -->
+    <script>
+        const productoSelect = document.getElementById('producto_id');
+        const unidadVentaSelect = document.getElementById('unidad_venta');
+        if (productoSelect && unidadVentaSelect) {
+            productoSelect.addEventListener('change', () => {
+                const selectedOption = productoSelect.options[productoSelect.selectedIndex];
+                const unidadAlmacen = selectedOption.getAttribute('data-unidad');
+                // Limpiar opciones anteriores
+                unidadVentaSelect.innerHTML = '';
+
+                // Agregar nuevas opciones basadas en la unidad del producto
+                @php
+                    $conversiones = App\Models\Movimiento::convertirAUnidadAlmacen(null, null, 'kilogramos');
+                @endphp
+
+                @foreach (array_keys($conversiones) as $key)
+                    const option = document.createElement('option');
+                    option.value = "{{ $key }}";
+                    option.textContent = "{{ ucfirst($key) }}";
+                    unidadVentaSelect.appendChild(option);
+                @endforeach
+
+                unidadVentaSelect.disabled = false;
+            });
+
+            // Disparar cambio inicial
+            window.addEventListener('DOMContentLoaded', () => {
+                const event = new Event('change');
+                productoSelect.dispatchEvent(event);
+            });
+        }
+    </script>
+@endpush
